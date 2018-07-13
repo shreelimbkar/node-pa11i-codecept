@@ -1,0 +1,22 @@
+{
+  "name": "pa11i-codecept",
+  "version": "1.0.0",
+  "description": "Node webapp demonstarte - pa11i and codecept",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js --exec babel-node -e js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shrivardhan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "nodemon": "^1.18.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
