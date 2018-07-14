@@ -1,6 +1,7 @@
 const express = require('express');
 const app = require('express')();
 const bodyParser = require('body-parser');
+const hbs = require('hbs');
 const server = require('http').Server(app);
 const port = 4400;
 
@@ -14,14 +15,23 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
-app.use(express.json());       // to support JSON-encoded bodies
-app.use(express.urlencoded()); // to support URL-encoded bodies
+// hbs.registerPartials(__dirname + './views');
+app.set('views', __dirname + '/public/views');
+app.set('view engine', 'html');
+app.engine('html', hbs.__express);
+
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    // res.sendFile(__dirname + '/public/index.html');
+    res.render('index');
 });
 
 app.post('/welcome', (req, res) => {
-    console.log('params', req.body);
-    res.sendFile(__dirname + '/public/welcome.html');
+    // console.log('params', req.body);
+    // res.sendFile(__dirname + '/public/welcome.html');
+    res.render('welcome', { name: req.body.uname })
 });
